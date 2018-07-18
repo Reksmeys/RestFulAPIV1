@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+<p th:text="*{name}"></p>
+<script>
+
+    $(document).ready(function () {
+        $.ajax({
+            type: "GET",
+            url: "/filter/jon/2005-05-25/Comforts Rush",
+            success: function () {
+                console.log('success')
+            },
+            error: function () {
+                console.log('error')
+            }
+        })
+    })
+
+
+</script>
+
+<table>
+
+    <tr th:each="student : ${student}" th:object="${student}">
+        <td th:text="*{id}"></td>
+        <td th:text="*{name}"></td>
+        <td th:text="*{sex}"></td>
+        <td th:text="*{profile}"></td>
+        <td><a th:href="@{/update/{id}(id=*{id})}">Update</a></td>
+    </tr>
+</table>
+
+
+</body>
+</html>

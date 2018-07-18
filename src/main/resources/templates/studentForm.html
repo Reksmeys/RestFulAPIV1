@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Form</title>
+</head>
+<body>
+<p th:text="${student}"></p>
+
+
+<form th:action="${formAdd == true ?'/add':'/update'}" method="post" th:object="${student}" enctype="multipart/form-data">
+    <input type="hidden" th:field="*{id}">
+    Name<input type="text" th:field="*{name}"><span style="color: red;" th:if="${#fields.hasErrors('name')}" th:text="${#fields.errors('name')[0]}"></span><br>
+    Sex: <input type="text" th:field="*{sex}"><span style="color: red;" th:if="${#fields.hasErrors('sex')}" th:text="${#fields.errors('sex')[0]}"></span><br>
+    Dob: <input type="date" th:field="*{dob}"><br>
+    <!--profile: <input type="text" th:field="*{profile}">-->
+    <input type="file" th:field="*{profile}">
+    <input type="submit" th:value="${formAdd == true ?'Save': 'Update'}">
+</form>
+
+<a th:href="@{/update/{id}(id=1)}"/>Update
+</body>
+</html>
