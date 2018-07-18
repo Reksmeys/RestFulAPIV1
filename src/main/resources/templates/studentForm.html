@@ -7,7 +7,7 @@
 <body>
 <p th:text="${student}"></p>
 
-
+<p>Test Git</p>
 <form th:action="${formAdd == true ?'/add':'/update'}" method="post" th:object="${student}" enctype="multipart/form-data">
     <input type="hidden" th:field="*{id}">
     Name<input type="text" th:field="*{name}"><span style="color: red;" th:if="${#fields.hasErrors('name')}" th:text="${#fields.errors('name')[0]}"></span><br>
